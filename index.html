@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Obligatorio M1A, Lucas Rearden, Facundo Miranda P1</title>
+  <link rel="stylesheet" href="styles/styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+  <!-- LOGIN -->
+  <section id="pantalla-login">
+    <h1 class="titulo">Login</h1>
+    <form class="login">
+      <label for="txtNombreUsuLogin">Ingrese nombre de usuario:</label>
+      <input type="text" id="txtNombreUsuLogin" name="nombreUsu">
+      <label for="txtContraseniaLogin">Ingrese contraseña:</label>
+      <div class="campo-contrasenia">
+        <input type="password" id="txtContraseniaLogin" name="txtContraseña">
+        <button type="button" id="btnToggleContraseniaLogin" class="btn-ojo">👁️</button>
+      </div>
+      
+
+      <button class="btnLogin">Login</button>
+      <button class="btnRegistrarse">Register</button>
+    </form>
+  </section>
+
+  <!-- REGISTRO -->
+  <section id="pantalla-registro" style="display: none;">
+    <h1>Registro</h1>
+    <form class="registro">
+      <label for="txtNombreUsuRegistro">Ingrese nombre de usuario:</label>
+      <input type="text" id="txtNombreUsuRegistro" name="nombreUsu">
+
+      <label for="txtContraseniaRegistro">Ingrese contraseña:</label>
+      <div class="campo-contrasenia">
+        <input type="password" id="txtContraseniaRegistro" name="txtContraseña">
+        <button type="button" id="btnToggleContraseniaRegistro">👁️</button>
+      </div>
+
+      <label for="txtNombrePerroRegistro">Ingrese el nombre de su perro:</label>
+      <input type="text" id="txtNombrePerroRegistro" name="txtNombrePerro">
+
+      <label for="slcTamanioPerroRegistro">Seleccione el tamaño de su perro:</label>
+      <select id="slcTamanioPerroRegistro">
+        <option value="0">Seleccione...</option>
+        <option value="grande">Grande</option>
+        <option value="mediano">Mediano</option>
+        <option value="chico">Chico</option>
+      </select>
+
+      <button class="btnRegistro">Registrarse</button>
+      <button class="btnVolver">Volver al login</button>
+    </form>
+  </section>
+
+  <!-- MURO CLIENTE -->
+  <section id="pantalla-cliente" style="display: none;">
+    <div class="container-superior-cliente">
+      <p>Cliente iniciado</p>
+      <button class="btnCerrarSesionCliente">Cerrar sesión</button>
+    </div>
+    <div class="paseadores-lista">
+    </div>
+    <div class="solicitudes-pendientes">
+      <h2>Solicitudes pendientes</h2>
+    </div>
+  </section>
+
+  <!-- MURO PASEADOR -->
+  <section id="pantalla-paseador" style="display: none;">
+    <div class="container-superior-paseador">
+      <p>Paseador iniciado</p>
+      <button class="btnCerrarSesionPaseador">Cerrar sesión</button>
+    </div>
+    <div class="contenido-paseador">
+      <h2>Muro Paseador</h2>
+       <div class="columna-izquierda-solicitudes"></div>
+    </div>
+  </section>
+
+  <script src="scripts/script.js"></script>
+</body>
+
+</html>

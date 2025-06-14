@@ -1,0 +1,345 @@
+* {
+    margin: 0 auto;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding: 16px;
+}
+
+body {
+    background-color: rgb(205, 215, 224);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h1 {
+    font-size: 60px;
+    font-weight: bold;
+    letter-spacing: 2.5;
+    text-transform: uppercase;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+h2 {
+    font-size: 30px;
+    font-weight: bold;
+    letter-spacing: 2.5;
+    text-transform: uppercase;
+}
+
+label {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* */
+.login input,
+.registro input,
+.registro select,
+.login button,
+.registro button {
+    width: 250px;
+    font-size: 16px;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+
+}
+
+/* Botones de login y registro */
+.login button,
+.registro button {
+    background-color: black;
+    color: aliceblue;
+    cursor: pointer;
+}
+
+/* Select específico */
+.registro select {
+    background-color: black;
+    color: white;
+    height: 50px;
+}
+
+/* CAMPO CONTRASEÑA */
+.campo-contrasenia {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 250px;
+    font-size: 13px;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+}
+
+.campo-contrasenia button {
+    background: none;
+    margin-bottom: 22px;
+}
+
+/* LOGIN */
+#pantalla-login {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background-image: url(/imgs/backgroundLogin.jpg);
+    background-size: cover;
+    background-position: center;
+    min-height: 540px;
+    min-width: 860px;
+    justify-content: center;
+    align-items: center;
+    border: 8px solid #0a174166;
+    padding: 40px;
+
+}
+
+#pantalla-login img {
+    width: 100%;
+    object-fit: cover;
+    object-position: 0% 24%;
+    aspect-ratio: 16 / 9;
+    border: 3px solid black;
+}
+
+.titulo {
+    font-family: 'Arial Black', sans-serif;
+    font-size: 62px;
+    text-transform: uppercase;
+    color: black;
+    opacity: 0;
+    transform: translateY(-20px);
+    animation: aparecer 1s ease-out forwards;
+    text-align: center;
+    letter-spacing: 3px;
+    text-shadow: 4px 5px 7px #0a174166;
+    /* SOMBRA AGREGADA */
+}
+
+/*Mueve el texto al aparecer de arrriba -20px a 0 eje Y*/
+@keyframes aparecer {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+#pantalla-login>.login {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* REGISTRO */
+#pantalla-registro {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    color: rgb(243, 243, 243);
+    background-image: url(/imgs/backgroundRegister.jpg);
+    background-size: cover;
+    background-position: center;
+    min-height: 540px;
+    min-width: 860px;
+    justify-content: center;
+    align-items: center;
+    border: 8px solid rgb(75, 3, 3);
+    padding: 40px;
+
+}
+
+#pantalla-registro h1 {
+    font-family: 'Arial Black', sans-serif;
+    font-size: 62px;
+    text-transform: uppercase;
+    color: rgb(196, 193, 193);
+    opacity: 0;
+    transform: translateY(20px);
+    animation: aparecer 2s ease-out forwards;
+    text-align: center;
+    letter-spacing: 4px;
+    text-shadow: 7px 8px 10px rgba(143, 5, 5, 0.4);
+   
+}
+
+#pantalla-registro>.registro {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* MURO CLIENTE */
+#pantalla-cliente {
+    background-color: rgb(12, 12, 12);
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    color: white;
+}
+
+.container-superior-cliente {
+    display: flex;
+    height: 100px;
+    width: 100%;
+    align-items: center;
+    border: 2px solid wheat;
+}
+
+.container-superior-cliente button {
+    margin-right: 25px;
+}
+
+.paseadores-lista {
+    display: flex;
+    height: 700px;
+    width: 100%;
+    border: 1px solid gainsboro;
+}
+
+.solicitudes-pendientes {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid green;
+    width: 100%;
+    gap: 30px;
+}
+
+.solicitudes-pendientes div
+{
+    display: flex;
+    gap: 50px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+
+.btnCancelarSolicitud{
+    padding: 10px;
+    width: 200px;
+    height: 60px;
+    border-radius: 15px;
+    font-size: 15px;
+    font-weight: bold;
+    font-family: Helvetica, sans-serif;
+    cursor: pointer;
+    border: none;
+}
+
+.campo-contrasenia button {
+    height: 15px;
+    width: 15px;
+    color: black;
+}
+
+/* MURO PASEADOR */
+
+#pantalla-paseador {
+    background-color: rgb(59, 51, 51);
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    color: white;
+}
+
+.container-superior-paseador {
+    display: flex;
+    width: 100%;
+    border: 5px solid black;
+    padding: 10px;
+    align-items: center;
+}
+
+.contenido-paseador {
+    padding-top: 15px;
+    display: flex;
+    gap: 20px;
+}
+
+.columna-izquierda-solicitudes {
+    flex: 1;
+    border-right: 1px solid #ccc;
+    padding-right: 10px;
+}
+
+/* btn cerrrar sesión cliente y paseador */
+.btnCerrarSesionCliente,
+.btnCerrarSesionPaseador {
+    border-radius: 10px;
+    width: 120px;
+    height: 40px;
+    background-color: rgb(4, 4, 48);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.5s ease;
+}
+
+.btnCerrarSesionCliente:hover,
+.btnCerrarSesionPaseador:hover {
+    transform: translateY(-2px);
+    background-color: rgb(59, 14, 100);
+}
+
+
+/* CARD PASEADOR */
+.card-paseador {
+    background-color: white;
+    color: black;
+    padding: 30px;
+    border-radius: 12px;
+    margin: 15px;
+    width: 300px;
+    box-shadow: 0 4px 8px rgba(34, 30, 30, 0.2);
+    font-size: 18px;
+    text-align: center;
+    max-height: 300px;
+}
+
+.paseadores-lista {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    overflow-x: auto;
+    padding: 16px;
+    width: 100%;
+    max-width: 100%;
+    scroll-behavior: smooth;
+}
+
+.paseadores-lista::-webkit-scrollbar {
+    height: 8px;
+}
+
+.paseadores-lista::-webkit-scrollbar-thumb {
+    background: #999;
+    border-radius: 4px;
+  }
+
+.btnSolicitarPaseo {
+    background-color: rgb(126, 41, 41);
+    color: black;
+    padding: 10px;
+    text-align: center;
+    font-size: 10px;
+    border-radius: 5px;
+    margin-top: 10px;
+    font-weight: bold;
+    min-width: 150px;
+    transition: all 0.5s ease;
+    cursor: pointer;
+}
+
+.btnSolicitarPaseo:hover {
+    transform: translateY(-2px);
+}
+
+
