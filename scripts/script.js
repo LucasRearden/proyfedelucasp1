@@ -161,7 +161,9 @@ btnLogin.addEventListener("click", (e) => {
     ).textContent = `Cliente iniciado: ${user.nombre}`;
 
     const tieneSolicitud = system.contrataciones.some(
-      (c) => c.cliente === user.nombre
+      (c) =>
+        c.cliente === user.nombre &&
+        (c.estado === "pendiente" || c.estado === "aceptada")
     );
 
     if (tieneSolicitud) {
@@ -173,8 +175,10 @@ btnLogin.addEventListener("click", (e) => {
       lista.style.display = "flex";
       mostrarPaseadoresDisponibles(user);
     }
+
     return;
   }
+
 
   const paseador = system.paseadores.find((p) =>
     p.verificarLoginPaseador(nombre, pass)
@@ -192,7 +196,7 @@ btnLogin.addEventListener("click", (e) => {
     columnaIzquierda.innerHTML = "<h3>Solicitudes pendientes</h3>";
 
     system.contrataciones
-      .filter((s) => s.idPaseador === paseador.idPaseador)
+      .filter((s) => s.idPaseador === paseador.idPaseador && s.estado === "pendiente")
       .forEach((s) => {
         const div = document.createElement("div");
         div.innerHTML = `
@@ -260,8 +264,11 @@ function mostrarSolicitudesDelUsuario(usuario) {
   contenedorSolicitudes.innerHTML = "<h2>Solicitudes pendientes</h2>";
 
   const solicitudes = system.contrataciones.filter(
-    (s) => s.cliente === usuario.nombre && s.estado === 'pendiente'
+    (s) =>
+      s.cliente === usuario.nombre &&
+      (s.estado === "pendiente" || s.estado === "aceptada")
   );
+
 
   solicitudes.forEach((s) => {
     const div = document.createElement("div");
@@ -274,7 +281,7 @@ function mostrarSolicitudesDelUsuario(usuario) {
   });
 }
 
-// ----- SOLICITAR PASEO (EVENTO UNA SOLA VEZ) -----
+// ----- SOLICITAR PASEO (EVENTO UNO A LA VEZ) -----
 lista.addEventListener("click", (e) => {
   if (
     e.target.classList.contains("btnSolicitarPaseo") &&
@@ -288,8 +295,10 @@ lista.addEventListener("click", (e) => {
     const yaPidio = system.contrataciones.some(
       (s) =>
         s.cliente === usuarioLogueadoActual.nombre &&
-        s.idPaseador === paseadorElegido.idPaseador
+        s.idPaseador === paseadorElegido.idPaseador && (
+        s.estado === "pendiente" || s.estado === "aceptada" )
     );
+
 
     if (yaPidio) {
       alert("Ya hiciste una solicitud a este paseador.");
@@ -323,8 +332,11 @@ contenedorSolicitudes.addEventListener("click", (e) => {
     usuarioLogueadoActual !== null
   ) {
     const contratacionACancelar = system.contrataciones.find(
-      (c) => c.cliente === usuarioLogueadoActual.nombre
+      (c) =>
+        c.cliente === usuarioLogueadoActual.nombre &&
+        (c.estado === "pendiente" || c.estado === "aceptada")
     );
+
     if (
       confirm(`¿Seguro que quieres cancelar la solicitud?`)
     ) {
@@ -333,6 +345,29 @@ contenedorSolicitudes.addEventListener("click", (e) => {
       contenedorSolicitudes.style.display = "none";
       mostrarSolicitudesDelUsuario(usuarioLogueadoActual);
       alert("Solicitud cancelada.");
+    }
+  }
+});
+
+
+document.querySelector(".columna-izquierda-solicitudes").addEventListener("click", (e) => {
+  const idSolicitud = parseInt(e.target.dataset.id);
+
+  if (e.target.classList.contains("btnAceptarSolicitudPaseador")) {
+    const solicitud = system.contrataciones.find(s => s.id === idSolicitud);
+    if (solicitud && solicitud.estado === "pendiente") {
+      solicitud.estado = "aceptada";
+      alert("Solicitud aceptada.");
+      e.target.parentElement.style.backgroundColor = "#d1e7dd";
+    }
+  }
+
+  if (e.target.classList.contains("btnCancelarSolicitudPaseador")) {
+    const solicitud = system.contrataciones.find(s => s.id === idSolicitud);
+    if (solicitud && solicitud.estado === "pendiente") {
+      solicitud.estado = "cancelada";
+      alert("Solicitud cancelada.");
+      e.target.parentElement.style.opacity = "0.5";
     }
   }
 });
