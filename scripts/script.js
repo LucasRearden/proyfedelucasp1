@@ -89,11 +89,13 @@ const btnCerrarSesionPaseador = document.querySelector(
   ".btnCerrarSesionPaseador"
 );
 
+const solicitudesAceptadas = document.querySelector(".container-solicitudes-aceptadas");
+
 const lista = document.querySelector(".paseadores-lista");
 const contenedorSolicitudes = document.querySelector(".solicitudes-pendientes");
 const btnCancelarSolicitud = document.querySelector(".btnCancelarSolicitud");
 
-// ----- UTILIDAD -----
+// ----- pantallas -----
 function ocultarPantallas() {
   pantallaLogin.style.display = "none";
   pantallaRegistro.style.display = "none";
@@ -205,6 +207,21 @@ btnLogin.addEventListener("click", (e) => {
           <button class="btnCancelarSolicitudPaseador" data-id="${s.id}">Cancelar solicitud</button>
           `;
         columnaIzquierda.appendChild(div);
+
+
+      });
+
+    system.contrataciones
+      .filter((s) => s.idPaseador === paseador.idPaseador && s.estado === "aceptada")
+      .forEach((s) => {
+        const div = document.createElement("div");
+        div.innerHTML = `
+          <p>Cliente: <strong>${s.cliente}</strong>. <br> Nombre del perro: <em>${s.perro}</em> <br>Tamaño del perro: ${s.tamanio}</p>
+          <button class="btnCancelarSolicitudPaseador" data-id="${s.id}">Cancelar solicitud</button>
+          `;
+        solicitudesAceptadas.appendChild(div);
+
+
       });
 
     return;
@@ -296,7 +313,7 @@ lista.addEventListener("click", (e) => {
       (s) =>
         s.cliente === usuarioLogueadoActual.nombre &&
         s.idPaseador === paseadorElegido.idPaseador && (
-        s.estado === "pendiente" || s.estado === "aceptada" )
+          s.estado === "pendiente" || s.estado === "aceptada")
     );
 
 

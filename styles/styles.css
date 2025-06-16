@@ -342,4 +342,16 @@ label {
     transform: translateY(-2px);
 }
 
+.contenido-paseador{
+    display: flex;
+    flex-direction: column;
+}
+
+.container-solicitudes-aceptadas {
+    margin-top: 500px;
+    display: flex;
+    flex-direction: column;
+
+}
+
 
